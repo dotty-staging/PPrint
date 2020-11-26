@@ -1,7 +1,7 @@
 package pprint
 
 trait TPrintLowPri{
-  inline given default[T] as TPrint[T] = ${ TPrintLowPri.typePrintImpl[T] }
+  inline given [T] => TPrint[T] as default = ${ TPrintLowPri.typePrintImpl[T] }
 }
 
 object TPrintLowPri{
