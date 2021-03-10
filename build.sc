@@ -22,7 +22,7 @@ val scalaNativeVersions = for {
 trait PPrintModule extends PublishModule {
   def artifactName = "pprint"
 
-  def publishVersion = VcsVersion.vcsState().format()
+  def publishVersion = "cb-SNAPSHOT" // hardcoded version for the community build
 
   def pomSettings = PomSettings(
     description = artifactName(),
@@ -41,8 +41,8 @@ trait PPrintModule extends PublishModule {
 trait PPrintMainModule extends CrossScalaModule {
   def millSourcePath = super.millSourcePath / offset
   def ivyDeps = Agg(
-    ivy"com.lihaoyi::fansi::0.2.11",
-    ivy"com.lihaoyi::sourcecode::0.2.4"
+    ivy"com.lihaoyi::fansi::cb-SNAPSHOT",
+    ivy"com.lihaoyi::sourcecode::cb-SNAPSHOT"
   )
   def compileIvyDeps =
     if (crossScalaVersion.startsWith("2")) Agg(
@@ -99,7 +99,7 @@ trait PPrintMainModule extends CrossScalaModule {
 trait PPrintTestModule extends ScalaModule with TestModule {
   def crossScalaVersion: String
   def testFrameworks = Seq("utest.runner.Framework")
-  def ivyDeps = Agg(ivy"com.lihaoyi::utest::0.7.7")
+  def ivyDeps = Agg(ivy"com.lihaoyi::utest::cb-SNAPSHOT")
   def offset: os.RelPath = os.rel
   def millSourcePath = super.millSourcePath / os.up
 
