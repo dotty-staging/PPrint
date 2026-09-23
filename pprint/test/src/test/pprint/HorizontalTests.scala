@@ -70,8 +70,8 @@ object HorizontalTests extends TestSuite{
         test("Nothing") - intercept[Exception](Check(throw new Exception(), ""))
         test("Null"){
           Check(null, "null")
-          Check(null: String, "null")
-          Check(Seq("look!", null: String, "hi"), """List("look!", null, "hi")""")
+          Check(null.asInstanceOf[String], "null")
+          Check(Seq("look!", null.asInstanceOf[String], "hi"), """List("look!", null, "hi")""")
         }
         test("Either"){
           Check(Left(123): Either[Int, Int], "Left(123)")

@@ -1,6 +1,7 @@
 package pprint
 
 import scala.annotation.{switch, tailrec}
+import scala.compiletime.uninitialized
 
 object Util{
 
@@ -21,7 +22,7 @@ object Util{
     * lazy and won't even evaluate each iterator until you ask it to
     */
   class ConcatIterator[T](it0: Iterator[Iterator[T]], joiner: () => Iterator[T]) extends Iterator[T]{
-    var head: Iterator[T] = null
+    var head: Iterator[T] = uninitialized
     var count = 0
 
     @tailrec private[this] def check(): Boolean = {

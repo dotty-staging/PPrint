@@ -202,7 +202,7 @@ object AdvancedTests extends TestSuite{
 
     test("toStringReturnsNull"){
       class ClassWithNullToString {
-        override def toString = null
+        override def toString = null.asInstanceOf[String]
       }
       val rendered = Check.color(new ClassWithNullToString)
       assert(rendered.plainText == "null")
