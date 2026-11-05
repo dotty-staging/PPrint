@@ -10,7 +10,7 @@ object TPrintTests extends TestSuite{
 
   val tests = TestSuite{
     //
-    type X = scala.Int with scala.Predef.String
+    type X = scala.Int & scala.Predef.String
     val x = ""
     test("plain"){
       def checkVal[T](expected: String, expr: => T)(implicit tprint: TPrint[T]) = {
